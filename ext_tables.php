@@ -46,7 +46,9 @@ try {
          * @var \TYPO3\CMS\Core\Cache\CacheFactory $typo3CacheFactory
          */
         $typo3CacheFactory = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
-            \TYPO3\CMS\Core\Cache\CacheFactory::class
+            \TYPO3\CMS\Core\Cache\CacheFactory::class,
+            'production',
+            $cacheManager
         );
         $typo3CacheFactory->create(
             SFREGISTERCACHEIDENTIFIER,
