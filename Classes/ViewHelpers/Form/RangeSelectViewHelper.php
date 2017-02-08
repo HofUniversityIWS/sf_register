@@ -83,8 +83,8 @@ class RangeSelectViewHelper extends \TYPO3\CMS\Fluid\ViewHelpers\Form\SelectView
         $this->registerArgument(
             'property',
             'string',
-            'Name of Object Property. If used in conjunction with <f:form object="...">,
- "name" and "value" properties will be ignored.'
+            'Name of Object Property. If used in conjunction with <f:form object="...">'
+            . ',"name" and "value" properties will be ignored.'
         );
         $this->registerArgument(
             'selectAllByDefault',
@@ -100,24 +100,45 @@ class RangeSelectViewHelper extends \TYPO3\CMS\Fluid\ViewHelpers\Form\SelectView
             false,
             'f3-form-error'
         );
+        $this->registerArgument(
+            'start',
+            'integer',
+            'Start value',
+            true
+        );
+        $this->registerArgument(
+            'end',
+            'integer',
+            'End value',
+            true
+        );
+        $this->registerArgument(
+            'step',
+            'integer',
+            'Step value',
+            false,
+            1
+        );
+        $this->registerArgument(
+            'digits',
+            'integer',
+            'Digits value',
+            false,
+            2
+        );
     }
 
     /**
      * Rendering of selectbox
      *
-     * @param integer $start
-     * @param integer $end
-     * @param integer $step
-     * @param integer $digits
-     *
      * @return string
      */
-    public function render($start, $end, $step = 1, $digits = 2)
+    public function render()
     {
-        $this->start = $start;
-        $this->end = $end;
-        $this->step = $step;
-        $this->digits = (int) $digits;
+        $this->start = (int)$this->arguments['start'];
+        $this->end = (int)$this->arguments['end'];
+        $this->step = (int)$this->arguments['step'];
+        $this->digits = (int)$this->arguments['digits'];
 
         return parent::render();
     }
