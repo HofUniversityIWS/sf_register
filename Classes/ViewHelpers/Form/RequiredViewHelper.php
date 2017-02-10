@@ -35,6 +35,16 @@ namespace Evoweb\SfRegister\ViewHelpers\Form;
 class RequiredViewHelper extends \TYPO3\CMS\Fluid\ViewHelpers\Form\AbstractFormFieldViewHelper
 {
     /**
+     * @var bool
+     */
+    protected $escapeOutput = false;
+
+    /**
+     * @var bool
+     */
+    protected $escapeChildren = false;
+
+    /**
      * Configuration manager to fetch settings from
      *
      * @var \TYPO3\CMS\Extbase\Configuration\ConfigurationManager
